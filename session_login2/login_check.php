@@ -11,7 +11,7 @@ $a_chk_list = file($file_password);
 
 // 會員檢查，注意格式
 $chk_string  = "!" . $ss_usercode . "#" . $ss_password . "@" . $ss_usertype;
-$chk_string .= "\r\n";   // 用file讀入的資料後面會多出兩個符號 \r\n
+$chk_string .= "\n";   // 用file讀入的資料後面會多出符號 (Windows:\n; Linux: \r\n)
 
 $valid = false; 
 if(in_array($chk_string, $a_chk_list))
@@ -40,7 +40,7 @@ $html = <<< HEREDOC
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">>
+<meta charset="UTF-8">
 <title>登入登出權限控制範例</title>
 </head>
 <body>
