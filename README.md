@@ -1,2 +1,7 @@
 # session_login
-PHP教學範例：Session用於權限控管及登入
+PHP教學範例：Session用於登入登出及權限控管
+
+
+## Update
+- ver 1.0 2021/09/18
+- ver 1.1 2022/07/24

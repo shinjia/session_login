@@ -1,55 +1,49 @@
 <?php
 session_start();
 
-$ss_usertype = isset($_POST["usertype"]) ? $_POST["usertype"] : "";
-$ss_usercode = isset($_POST["usercode"]) ? $_POST["usercode"] : "";
-$ss_password = isset($_POST["password"]) ? $_POST["password"] : "";
+$usercode = isset($_POST['usercode']) ? $_POST['usercode'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 
-// 假設用戶資料 (資料存於文字檔) 可自行定義存檔的格式
-$file_password = "user_password.txt";   // 存帳號及密碼的文字檔
-$a_chk_list = file($file_password);
+// 存帳號及密碼的文字檔，注意格式
+$file_password = 'user_password.txt';
 
-// 會員檢查，注意格式
-$chk_string  = "!" . $ss_usercode . "#" . $ss_password . "@" . $ss_usertype;
-$chk_string .= "\n";   // 用file讀入的資料後面會多出符號 (Windows:\n; Linux: \r\n)
+// 用file讀入的資料後面會多出符號 (Windows:\r\n; Linux: \n)
+$a_list = file($file_password);
 
-$valid = false; 
-if(in_array($chk_string, $a_chk_list))
-{
-   $valid = true;
-   $_SESSION["usertype"] = $ss_usertype;
-   $_SESSION["usercode"] = $ss_usercode;
+// 會員檢查，注意格式 (!!帳號##密碼@@)
+$chk_string  = '!!' . $usercode . '##' . $password . '@@';
+
+// 比對是否符合
+$valid = false;
+foreach($a_list as $one){
+    $newstr = substr($one, 0, strpos($one, '@@')+2);
+    if($newstr==$chk_string){
+        $valid = true;
+        // 取得 usertype
+        $n1 = strpos($one,'@@');
+        $n2 = strpos($one,'==');
+        $usertype = substr($one, $n1+2, $n2-$n1-2);  // 取出 usertype
+        break;
+    }
 }
-else
-{
-   $_SESSION["usertype"] = "";
-   $_SESSION["usercode"] = "";
-}
 
-if($valid)
-{
-   $msg = $ss_usercode . ' 你好，歡迎光臨！ ';
+// 權限是否通過
+if($valid){
+    $_SESSION['usertype'] = $usertype;
+    $_SESSION['usercode'] = $usercode;
+    $msg = $usercode . ' 你好，歡迎光臨！ ';
 }
-else
-{
-   $msg = '登入錯誤';
+else {
+    $_SESSION['usertype'] = '';
+    $_SESSION['usercode'] = '';
+    $msg = '登入錯誤';
 }
 
 
 $html = <<< HEREDOC
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>登入登出權限控制範例</title>
-</head>
-<body>
 <p>{$msg}</p>
-<br><br>
-<p><a href="index.php">進入首頁</a></p>
-</body>
-</html>
 HEREDOC;
 
-echo $html;
+include 'pagemake.php';
+pagemake($html);
 ?>

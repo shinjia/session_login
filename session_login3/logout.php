@@ -1,23 +1,16 @@
 <?php
 session_start();
 
-unset($_SESSION["usertype"]);
-unset($_SESSION["usercode"]);
+include 'define.php';
+
+unset($_SESSION[SYSTEM_CODE.'usertype']);
+unset($_SESSION[SYSTEM_CODE.'usercode']);
 
 
 $html = <<< HEREDOC
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>登入登出權限控制範例</title>
-</head>
-<body>
-已登出
-<BR><a href="index.php">按此處回首頁</a>
-</body>
-</html>
+<p>已登出</p>
 HEREDOC;
 
-echo $html;
+include 'pagemake.php';
+pagemake($html);
 ?>

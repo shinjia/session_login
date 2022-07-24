@@ -1,26 +1,28 @@
 <?php
 session_start();
 
-$ss_usertype = isset($_SESSION["usertype"]) ? $_SESSION["usertype"] : "";
-$ss_usercode = isset($_SESSION["usercode"]) ? $_SESSION["usercode"] : "";
+include 'define.php';
 
+$ss_usertype = isset($_SESSION[SYSTEM_CODE.'usertype']) ? $_SESSION[SYSTEM_CODE.'usertype'] : '';
+$ss_usercode = isset($_SESSION[SYSTEM_CODE.'usercode']) ? $_SESSION[SYSTEM_CODE.'usercode'] : '';
+
+$system_code = SYSTEM_CODE;
 
 $html = <<< HEREDOC
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>登入登出權限控制範例</title>
-</head>
-<body>
 <p>此程式為查看session的變數內容，謹供程式開發測試用。</p>
-<p>
-usertype:{$ss_usertype}<br>
-usercode:{$ss_usercode}
-</p>
-</body>
-</html>
+<p>SYSTEM_CODE: <span style="color:#FF0000;">{$system_code}</span>
+<ul>
+    <li><span style="color:#FF0000;">{$system_code}</span>usertype: {$ss_usertype}</li>
+    <li><span style="color:#FF0000;">{$system_code}</span>usercode: {$ss_usercode}</li>
+</ul>
+
+<h3>系統內存放的 SESSION 變數</h3>
 HEREDOC;
 
-echo $html;
+$html .= '<pre>';
+$html .= print_r($_SESSION, true);
+$html .= '</pre>';
+
+include 'pagemake.php';
+pagemake($html);
 ?>
