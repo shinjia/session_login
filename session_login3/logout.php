@@ -3,8 +3,8 @@ session_start();
 
 include 'define.php';
 
-unset($_SESSION[SYSTEM_CODE.'usertype']);
-unset($_SESSION[SYSTEM_CODE.'usercode']);
+unset($_SESSION[DEF_SESSION_USERTYPE]);
+unset($_SESSION[DEF_SESSION_USERCODE]);
 
 
 $html = <<< HEREDOC
