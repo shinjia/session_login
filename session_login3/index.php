@@ -6,16 +6,17 @@ include 'define.php';
 $ss_usertype = isset($_SESSION[SYSTEM_CODE.'usertype']) ? $_SESSION[SYSTEM_CODE.'usertype'] : '';
 $ss_usercode = isset($_SESSION[SYSTEM_CODE.'usercode']) ? $_SESSION[SYSTEM_CODE.'usercode'] : '';
 
-switch($ss_usertype)
-{
+switch($ss_usertype) {
     case DEF_LOGIN_ADMIN :
     case DEF_LOGIN_MEMBER :
-            $msg = 'Hi，<span style="color:#FF0000;">' . $ss_usercode . '</span> 您好，</font>';
-            break;
+        $msg = 'Hi，<span style="color:#FF0000;">' . $ss_usercode . '</span> 您好，</font>';
+        break;
             
     default:
-            $msg = '你尚未登入系統，請<a href="login.php">按這裡</a>登入！';
+        $msg = '你尚未登入系統，請<a href="login.php">按這裡</a>登入！';
 }
+
+//==============================================================================
 
 
 $html = <<< HEREDOC

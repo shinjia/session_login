@@ -15,9 +15,9 @@ $chk_string  = '!!' . $usercode . '##' . $password_encrypt . '@@';
 
 // 比對是否符合
 $valid = false;
-foreach($a_list as $one){
+foreach($a_list as $one) {
     $newstr = substr($one, 0, strpos($one, '@@')+2);
-    if($newstr==$chk_string){
+    if($newstr==$chk_string) {
         $valid = true;
         // 取得 usertype
         $n1 = strpos($one,'@@');
@@ -28,7 +28,7 @@ foreach($a_list as $one){
 }
 
 // 權限是否通過
-if($valid){
+if($valid) {
     $_SESSION[DEF_SESSION_USERTYPE] = $usertype;
     $_SESSION[DEF_SESSION_USERCODE] = $usercode;
     $msg = $usercode . ' 你好，歡迎光臨！ ';

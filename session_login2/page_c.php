@@ -4,11 +4,12 @@ session_start();
 $ss_usertype = isset($_SESSION['usertype']) ? $_SESSION['usertype'] : '';
 $ss_usercode = isset($_SESSION['usercode']) ? $_SESSION['usercode'] : '';
 
-if($ss_usertype!='ADMIN')
-{
+if($ss_usertype!='ADMIN') {
     header('Location: login_error.php');
     exit;
 }
+
+//==============================================================================
 
 
 $html = <<< HEREDOC

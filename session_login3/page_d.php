@@ -8,11 +8,12 @@ $ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_US
 
 $a_valid_usertype = array(DEF_LOGIN_MEMBER, DEF_LOGIN_ADMIN);  // 可以使用本網頁的權限
 
-if(!in_array($ss_usertype, $a_valid_usertype))
-{
+if(!in_array($ss_usertype, $a_valid_usertype)) {
     header('Location: login_error.php');
     exit;
 }
+
+//==============================================================================
 
 
 $html = <<< HEREDOC

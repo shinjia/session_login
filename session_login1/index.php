@@ -5,8 +5,7 @@ $ss_usertype = isset($_SESSION['usertype']) ? $_SESSION['usertype'] : '';
 $ss_usercode = isset($_SESSION['usercode']) ? $_SESSION['usercode'] : '';
 
 
-switch($ss_usertype)
-{
+switch($ss_usertype) {
     case 'ADMIN' :
     case 'MEMBER' :
             $msg = '<p>Hi，<span style="color:#FF0000;">' . $ss_usercode . '</span> 您好，</p>';

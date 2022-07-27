@@ -4,16 +4,14 @@ session_start();
 $ss_usertype = isset($_SESSION["usertype"]) ? $_SESSION["usertype"] : "";
 $ss_usercode = isset($_SESSION["usercode"]) ? $_SESSION["usercode"] : "";
 
-
-switch($ss_usertype)
-{
+switch($ss_usertype) {
     case "ADMIN" :
     case "MEMBER" :
-            $msg = '<p>Hi，<span style="color:#FF0000;">' . $ss_usercode . '</span> 您好，</p>';
-            break;
+        $msg = '<p>Hi，<span style="color:#FF0000;">' . $ss_usercode . '</span> 您好，</p>';
+        break;
             
     default:
-            $msg = '你尚未登入系統，請 <a href="login.php">按這裡</a> 登入！';
+        $msg = '你尚未登入系統，請 <a href="login.php">按這裡</a> 登入！';
 }
 
 
