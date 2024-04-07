@@ -3,8 +3,8 @@ session_start();
 
 include 'define.php';
 
-$ss_usertype = $_SESSION[SYSTEM_CODE.'usertype'] ?? '';
-$ss_usercode = $_SESSION[SYSTEM_CODE.'usercode'] ?? '';
+$ss_usertype = $_SESSION[DEF_SESSION_USERTYPE] ?? '';
+$ss_usercode = $_SESSION[DEF_SESSION_USERCODE] ?? '';
 
 switch($ss_usertype) {
     case DEF_LOGIN_ADMIN :

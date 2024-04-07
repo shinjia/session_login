@@ -3,8 +3,8 @@ session_start();
 
 include 'define.php';
 
-$usercode = isset($_POST['usercode']) ? $_POST['usercode'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+$usercode = $_POST['usercode'] ?? '';
+$password = $_POST['password'] ?? '';
 
 // 存帳號及密碼的文字檔，注意格式
 $a_list = file(DEF_PASSWORD_FILE);
