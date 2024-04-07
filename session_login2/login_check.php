@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$usercode = isset($_POST['usercode']) ? $_POST['usercode'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+$usercode = $_POST['usercode'] ?? '';
+$password = $_POST['password'] ?? '';
 
 // 存帳號及密碼的文字檔，注意格式
 $file_password = 'user_password.txt';

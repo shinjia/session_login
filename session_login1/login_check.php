@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$usertype = isset($_POST['usertype']) ? $_POST['usertype'] : '';
-$usercode = isset($_POST['usercode']) ? $_POST['usercode'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+$usertype = $_POST['usertype'] ?? '';
+$usercode = $_POST['usercode'] ?? '';
+$password = $_POST['password'] ?? '';
 
 // 假設用戶資料 (資料應存於文字檔或資料庫，此處直接寫在程式內，示範用)
 

@@ -3,8 +3,8 @@ session_start();
 
 include 'define.php';
 
-$ss_usertype = isset($_SESSION[DEF_SESSION_USERTYPE]) ? $_SESSION[DEF_SESSION_USERTYPE] : '';
-$ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_USERCODE] : '';
+$ss_usertype = $_SESSION[DEF_SESSION_USERTYPE] ?? '';
+$ss_usercode = $_SESSION[DEF_SESSION_USERCODE] ?? '';
 
 if($ss_usertype!=DEF_LOGIN_ADMIN) {
     header('Location: login_error.php');

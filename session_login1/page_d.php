@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$ss_usertype = isset($_SESSION['usertype']) ? $_SESSION['usertype'] : '';
-$ss_usercode = isset($_SESSION['usercode']) ? $_SESSION['usercode'] : '';
+$ss_usertype = $_SESSION['usertype'] ?? '';
+$ss_usercode = $_SESSION['usercode'] ?? '';
 
 $a_valid_usertype = array('MEMBER', 'ADMIN');  // 可以使用本網頁的權限
 

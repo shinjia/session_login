@@ -1,8 +1,8 @@
 <?php
 
-$usercode = isset($_POST['usercode']) ? $_POST['usercode'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
-$usertype = isset($_POST['usertype']) ? $_POST['usertype'] : '';
+$usercode = $_POST['usercode'] ?? '';
+$password = $_POST['password'] ?? '';
+$usertype = $_POST['usertype'] ?? '';
 
 include 'define.php';
 
